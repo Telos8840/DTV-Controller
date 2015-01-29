@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="RCS.DTV.RZC.Views.MainLogoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+             xmlns:metro="clr-namespace:Elysium.Controls;assembly=Elysium"
+             xmlns:tog="clr-namespace:ToggleSwitch;assembly=ToggleSwitch"
+             mc:Ignorable="d" 
+             d:DesignHeight="230" d:DesignWidth="245"
+             DataContext="{Binding Source={StaticResource Locator}, Path=MainLogoViewModel}">
+    
+    <StackPanel Orientation="Vertical" Margin="5">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="20" Width="230">
+            <RadioButton Content="One Logo" Margin="5, 0" Foreground="White" IsChecked="{Binding Logo1Checked}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="ChangeFormat"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
+            <RadioButton Content="Two Logos" Margin="35, 0" Foreground="White" IsChecked="{Binding Logo2Checked}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="ChangeFormat"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
+        </StackPanel>
+        <Grid Margin="0, 5" HorizontalAlignment="Center" Height="20" Width="230">
+            <!--<tog:HorizontalToggleSwitch ThumbSize="25" Width="55" FontSize="10" HorizontalAlignment="{Binding Toggle1Alignment}" Foreground="White" Margin="25, 0" CheckedContent="3D" UncheckedContent="2D" IsEnabled="True" IsChecked="{Binding Logo1DimChecked}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ThumbTemplate="{StaticResource GroovedThumbTemplate}"/>
+            <tog:HorizontalToggleSwitch ThumbSize="25" Width="55" FontSize="10" Visibility="{Binding Toggle2Visibility}" HorizontalAlignment="Right" Foreground="White" Margin="0, 0, 30, 0" CheckedContent="3D" UncheckedContent="2D" IsEnabled="True" IsChecked="{Binding Logo2DimChecked}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ThumbTemplate="{StaticResource GroovedThumbTemplate}"/>-->
+            <metro:ToggleSwitch HorizontalAlignment="{Binding Toggle1Alignment}" Foreground="White" Margin="6, 0" OnHeader="3D" OffHeader="2D" IsEnabled="True" IsChecked="{Binding Logo1DimChecked}" Width="80"/>
+            <metro:ToggleSwitch Visibility="{Binding Toggle2Visibility}" HorizontalAlignment="Right" Foreground="White" Margin="0, 0, 15, 0" OnHeader="3D" OffHeader="2D" IsEnabled="True" IsChecked="{Binding Logo2DimChecked}" Width="80"/>
+        </Grid>
+        <Grid Height="125" Margin="0, 5">
+            <Image Width="115" HorizontalAlignment="{Binding Logo1Alignment}" Source="{Binding Logo1, Converter={StaticResource PathToLogoConverter}}"/>
+            <Image Width="115" HorizontalAlignment="Right" Visibility="{Binding Logo2Visibility}" Source="{Binding Logo2, Converter={StaticResource PathToLogoConverter}}"/>
+        </Grid>
+        <Grid Margin="23, 0">
+            <Button Content="LOGO 1" HorizontalAlignment="{Binding Btn1Alignment}" Width="80">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadLogo1"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="LOGO 2" HorizontalAlignment="Right" Width="80" Visibility="{Binding Btn2Visibility}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadLogo2"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
+            
+    </StackPanel>
+</UserControl>

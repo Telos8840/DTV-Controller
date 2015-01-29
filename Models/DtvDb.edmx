@@ -1,0 +1,1137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DtvRedZoneModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DtvRedZoneModelStoreContainer">
+          <EntitySet Name="CurrentWeek" EntityType="DtvRedZoneModel.Store.CurrentWeek" store:Type="Tables" store:Schema="dbo" store:Name="CurrentWeek">
+            <DefiningQuery>SELECT 
+      [CurrentWeek].[Season] AS [Season], 
+      [CurrentWeek].[SeasonType] AS [SeasonType], 
+      [CurrentWeek].[Week] AS [Week]
+      FROM [dbo].[CurrentWeek] AS [CurrentWeek]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DtvGames" EntityType="DtvRedZoneModel.Store.DtvGames" store:Type="Tables" store:Schema="dbo" store:Name="DtvGames">
+            <DefiningQuery>SELECT 
+      [DtvGames].[GameNumber] AS [GameNumber], 
+      [DtvGames].[DtvTricodeHome] AS [DtvTricodeHome], 
+      [DtvGames].[DtvTricodeAway] AS [DtvTricodeAway], 
+      [DtvGames].[GameDate] AS [GameDate], 
+      [DtvGames].[Channel] AS [Channel], 
+      [DtvGames].[Network] AS [Network], 
+      [DtvGames].[StartTime] AS [StartTime]
+      FROM [dbo].[DtvGames] AS [DtvGames]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DtvTrioEnginePairs" EntityType="DtvRedZoneModel.Store.DtvTrioEnginePairs" store:Type="Tables" store:Schema="dbo" store:Name="DtvTrioEnginePairs">
+            <DefiningQuery>SELECT 
+      [DtvTrioEnginePairs].[TrioIp] AS [TrioIp], 
+      [DtvTrioEnginePairs].[EngineIp] AS [EngineIp]
+      FROM [dbo].[DtvTrioEnginePairs] AS [DtvTrioEnginePairs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GameLocations" EntityType="DtvRedZoneModel.Store.GameLocations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GamePassers" EntityType="DtvRedZoneModel.Store.GamePassers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GameReceivers" EntityType="DtvRedZoneModel.Store.GameReceivers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GameRushers" EntityType="DtvRedZoneModel.Store.GameRushers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Games" EntityType="DtvRedZoneModel.Store.Games" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Teams" EntityType="DtvRedZoneModel.Store.Teams" store:Type="Tables" store:Schema="dbo" store:Name="Teams">
+            <DefiningQuery>SELECT 
+      [Teams].[DtvTricode] AS [DtvTricode], 
+      [Teams].[NflTricode] AS [NflTricode], 
+      [Teams].[City] AS [City], 
+      [Teams].[TeamName] AS [TeamName], 
+      [Teams].[Conference] AS [Conference], 
+      [Teams].[Division] AS [Division], 
+      [Teams].[NickName] AS [NickName]
+      FROM [dbo].[Teams] AS [Teams]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WeekGameDates" EntityType="DtvRedZoneModel.Store.WeekGameDates" store:Type="Tables" store:Schema="dbo" store:Name="WeekGameDates">
+            <DefiningQuery>SELECT 
+      [WeekGameDates].[GameDate] AS [GameDate]
+      FROM [dbo].[WeekGameDates] AS [WeekGameDates]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DtvRedZone.dbo.CurrentWeek' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="CurrentWeek">
+          <Key>
+            <PropertyRef Name="Season" />
+            <PropertyRef Name="SeasonType" />
+            <PropertyRef Name="Week" />
+          </Key>
+          <Property Name="Season" Type="int" Nullable="false" />
+          <Property Name="SeasonType" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="Week" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DtvRedZone.dbo.DtvGames' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="DtvGames">
+          <Key>
+            <PropertyRef Name="GameNumber" />
+            <PropertyRef Name="DtvTricodeHome" />
+            <PropertyRef Name="DtvTricodeAway" />
+            <PropertyRef Name="GameDate" />
+          </Key>
+          <Property Name="GameNumber" Type="int" Nullable="false" />
+          <Property Name="DtvTricodeHome" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="DtvTricodeAway" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="GameDate" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="Channel" Type="varchar" MaxLength="20" />
+          <Property Name="Network" Type="varchar" MaxLength="20" />
+          <Property Name="StartTime" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DtvRedZone.dbo.DtvTrioEnginePairs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="DtvTrioEnginePairs">
+          <Key>
+            <PropertyRef Name="TrioIp" />
+            <PropertyRef Name="EngineIp" />
+          </Key>
+          <Property Name="TrioIp" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="EngineIp" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="GameLocations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Tri" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="Stadium" Type="varchar" MaxLength="50" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="GamePassers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="GameKey" Type="int" />
+          <Property Name="Tricode" Type="varchar" MaxLength="3" />
+          <Property Name="JerseyNumber" Type="varchar" MaxLength="2" />
+          <Property Name="PlayerName" Type="varchar" MaxLength="50" />
+          <Property Name="Attempts" Type="int" />
+          <Property Name="Completions" Type="int" />
+          <Property Name="CompletionPct" Type="varchar" MaxLength="10" />
+          <Property Name="Yards" Type="int" />
+          <Property Name="YardsPerAttempt" Type="varchar" MaxLength="10" />
+          <Property Name="TimesSacked" Type="int" />
+          <Property Name="SackYardsLost" Type="int" />
+          <Property Name="Touchdowns" Type="int" />
+          <Property Name="Long" Type="int" />
+          <Property Name="Interceptions" Type="int" />
+          <Property Name="Rating" Type="varchar" MaxLength="10" />
+          <Property Name="LongestTouchdownPass" Type="int" />
+          <Property Name="PlayerID" Type="varchar" MaxLength="15" />
+          <Property Name="StatString" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Position" Type="varchar" MaxLength="20" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="GameReceivers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="GameKey" Type="int" />
+          <Property Name="Tricode" Type="varchar" MaxLength="3" />
+          <Property Name="JerseyNumber" Type="varchar" MaxLength="2" />
+          <Property Name="PlayerName" Type="varchar" MaxLength="50" />
+          <Property Name="Receptions" Type="int" />
+          <Property Name="Yards" Type="int" />
+          <Property Name="Average" Type="varchar" MaxLength="5" />
+          <Property Name="Long" Type="int" />
+          <Property Name="Touchdowns" Type="int" />
+          <Property Name="LongestTouchdownReception" Type="int" />
+          <Property Name="PassTarget" Type="int" />
+          <Property Name="YardsAfterCatch" Type="int" />
+          <Property Name="PlayerID" Type="varchar" MaxLength="15" />
+          <Property Name="StatString" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Position" Type="varchar" MaxLength="20" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="GameRushers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="GameKey" Type="int" />
+          <Property Name="Tricode" Type="varchar" MaxLength="3" />
+          <Property Name="JerseyNumber" Type="varchar" MaxLength="2" />
+          <Property Name="PlayerName" Type="varchar" MaxLength="50" />
+          <Property Name="Attempts" Type="int" />
+          <Property Name="Yards" Type="int" />
+          <Property Name="Average" Type="varchar" MaxLength="5" />
+          <Property Name="Long" Type="int" />
+          <Property Name="Touchdowns" Type="int" />
+          <Property Name="LongestTouchdownRush" Type="int" />
+          <Property Name="PlayerID" Type="varchar" MaxLength="15" />
+          <Property Name="StatString" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Position" Type="varchar" MaxLength="20" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="GameKey" Type="int" />
+          <Property Name="Week" Type="int" />
+          <Property Name="Season" Type="int" />
+          <Property Name="SeasonType" Type="varchar" MaxLength="4" />
+          <Property Name="TricodeHome" Type="varchar" MaxLength="3" />
+          <Property Name="TricodeAway" Type="varchar" MaxLength="3" />
+          <Property Name="ScoreHome" Type="int" />
+          <Property Name="ScoreAway" Type="int" />
+          <Property Name="Quarter" Type="varchar" MaxLength="20" />
+          <Property Name="GameClock" Type="varchar" MaxLength="8" />
+          <Property Name="FileSequence" Type="int" />
+          <Property Name="GameDate" Type="varchar" MaxLength="8" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DtvRedZone.dbo.Teams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="DtvTricode" />
+            <PropertyRef Name="NflTricode" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="TeamName" />
+            <PropertyRef Name="Conference" />
+            <PropertyRef Name="Division" />
+          </Key>
+          <Property Name="DtvTricode" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="NflTricode" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="City" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="TeamName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Conference" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="Division" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="NickName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DtvRedZone.dbo.WeekGameDates' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="WeekGameDates">
+          <Key>
+            <PropertyRef Name="GameDate" />
+          </Key>
+          <Property Name="GameDate" Type="varchar" Nullable="false" MaxLength="8" />
+        </EntityType>
+        <Function Name="ClearDb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DeleteGamePassers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GameKey" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteGameReceivers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GameKey" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteGameRushers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GameKey" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetDtvGameInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GameNumber" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetGame" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GameDate" Type="varchar" Mode="In" />
+          <Parameter Name="TricodeHome" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetGamePlayerPassing" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Season" Type="int" Mode="In" />
+          <Parameter Name="SeasonType" Type="varchar" Mode="In" />
+          <Parameter Name="Week" Type="int" Mode="In" />
+          <Parameter Name="Tricode" Type="varchar" Mode="In" />
+          <Parameter Name="JerseyNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetGamePlayerReceiving" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Season" Type="int" Mode="In" />
+          <Parameter Name="SeasonType" Type="varchar" Mode="In" />
+          <Parameter Name="Week" Type="int" Mode="In" />
+          <Parameter Name="Tricode" Type="varchar" Mode="In" />
+          <Parameter Name="JerseyNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetGamePlayerRushing" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Season" Type="int" Mode="In" />
+          <Parameter Name="SeasonType" Type="varchar" Mode="In" />
+          <Parameter Name="Week" Type="int" Mode="In" />
+          <Parameter Name="Tricode" Type="varchar" Mode="In" />
+          <Parameter Name="JerseyNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetGameTopPerformersByTeam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GameKey" Type="int" Mode="In" />
+          <Parameter Name="Tricode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetWeekFantasyPassingLeaders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Season" Type="int" Mode="In" />
+          <Parameter Name="SeasonType" Type="varchar" Mode="In" />
+          <Parameter Name="Week" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWeekFantasyReceivingLeaders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Season" Type="int" Mode="In" />
+          <Parameter Name="SeasonType" Type="varchar" Mode="In" />
+          <Parameter Name="Week" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWeekFantasyRushingLeaders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Season" Type="int" Mode="In" />
+          <Parameter Name="SeasonType" Type="varchar" Mode="In" />
+          <Parameter Name="Week" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWeekPassingLeaders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Season" Type="int" Mode="In" />
+          <Parameter Name="SeasonType" Type="varchar" Mode="In" />
+          <Parameter Name="Week" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWeekReceivingLeaders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Season" Type="int" Mode="In" />
+          <Parameter Name="SeasonType" Type="varchar" Mode="In" />
+          <Parameter Name="Week" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWeekRushingLeaders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Season" Type="int" Mode="In" />
+          <Parameter Name="SeasonType" Type="varchar" Mode="In" />
+          <Parameter Name="Week" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateGame" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FileSequence" Type="int" Mode="In" />
+          <Parameter Name="GameKey" Type="int" Mode="In" />
+          <Parameter Name="Week" Type="int" Mode="In" />
+          <Parameter Name="Season" Type="int" Mode="In" />
+          <Parameter Name="SeasonType" Type="varchar" Mode="In" />
+          <Parameter Name="TricodeHome" Type="varchar" Mode="In" />
+          <Parameter Name="TricodeAway" Type="varchar" Mode="In" />
+          <Parameter Name="ScoreHome" Type="int" Mode="In" />
+          <Parameter Name="ScoreAway" Type="int" Mode="In" />
+          <Parameter Name="Quarter" Type="varchar" Mode="In" />
+          <Parameter Name="GameClock" Type="varchar" Mode="In" />
+          <Parameter Name="GameDate" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateGamePasser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GameKey" Type="int" Mode="In" />
+          <Parameter Name="Tricode" Type="varchar" Mode="In" />
+          <Parameter Name="JerseyNumber" Type="varchar" Mode="In" />
+          <Parameter Name="PlayerName" Type="varchar" Mode="In" />
+          <Parameter Name="Attempts" Type="int" Mode="In" />
+          <Parameter Name="Completions" Type="int" Mode="In" />
+          <Parameter Name="CompletionPct" Type="varchar" Mode="In" />
+          <Parameter Name="Yards" Type="int" Mode="In" />
+          <Parameter Name="YardsPerAttempt" Type="varchar" Mode="In" />
+          <Parameter Name="TimesSacked" Type="int" Mode="In" />
+          <Parameter Name="SackYardsLost" Type="int" Mode="In" />
+          <Parameter Name="Touchdowns" Type="int" Mode="In" />
+          <Parameter Name="Long" Type="int" Mode="In" />
+          <Parameter Name="Interceptions" Type="int" Mode="In" />
+          <Parameter Name="Rating" Type="varchar" Mode="In" />
+          <Parameter Name="LongestTouchdownPass" Type="int" Mode="In" />
+          <Parameter Name="PlayerID" Type="varchar" Mode="In" />
+          <Parameter Name="StatString" Type="varchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Position" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateGameReceiver" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GameKey" Type="int" Mode="In" />
+          <Parameter Name="Tricode" Type="varchar" Mode="In" />
+          <Parameter Name="JerseyNumber" Type="varchar" Mode="In" />
+          <Parameter Name="PlayerName" Type="varchar" Mode="In" />
+          <Parameter Name="Receptions" Type="int" Mode="In" />
+          <Parameter Name="Yards" Type="int" Mode="In" />
+          <Parameter Name="Average" Type="varchar" Mode="In" />
+          <Parameter Name="Long" Type="int" Mode="In" />
+          <Parameter Name="Touchdowns" Type="int" Mode="In" />
+          <Parameter Name="LongestTouchdownReception" Type="int" Mode="In" />
+          <Parameter Name="PassTarget" Type="int" Mode="In" />
+          <Parameter Name="YardsAfterCatch" Type="int" Mode="In" />
+          <Parameter Name="PlayerID" Type="varchar" Mode="In" />
+          <Parameter Name="StatString" Type="varchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Position" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateGameRusher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GameKey" Type="int" Mode="In" />
+          <Parameter Name="Tricode" Type="varchar" Mode="In" />
+          <Parameter Name="JerseyNumber" Type="varchar" Mode="In" />
+          <Parameter Name="PlayerName" Type="varchar" Mode="In" />
+          <Parameter Name="Attempts" Type="int" Mode="In" />
+          <Parameter Name="Yards" Type="int" Mode="In" />
+          <Parameter Name="Average" Type="varchar" Mode="In" />
+          <Parameter Name="Long" Type="int" Mode="In" />
+          <Parameter Name="Touchdowns" Type="int" Mode="In" />
+          <Parameter Name="LongestTouchdownRush" Type="int" Mode="In" />
+          <Parameter Name="PlayerID" Type="varchar" Mode="In" />
+          <Parameter Name="StatString" Type="varchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Position" Type="varchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DtvRedZoneModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DtvRedZoneEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CurrentWeeks" EntityType="DtvRedZoneModel.CurrentWeek" />
+          <EntitySet Name="DtvGames" EntityType="DtvRedZoneModel.DtvGame" />
+          <EntitySet Name="DtvTrioEnginePairs" EntityType="DtvRedZoneModel.DtvTrioEnginePair" />
+          <EntitySet Name="GameLocations" EntityType="DtvRedZoneModel.GameLocation" />
+          <EntitySet Name="Teams" EntityType="DtvRedZoneModel.Team" />
+          <EntitySet Name="WeekGameDates" EntityType="DtvRedZoneModel.WeekGameDate" />
+          <FunctionImport Name="ClearDb" />
+          <FunctionImport Name="DeleteGamePassers">
+          <Parameter Name="GameKey" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteGameReceivers">
+          <Parameter Name="GameKey" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteGameRushers">
+          <Parameter Name="GameKey" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDtvGameInfo" ReturnType="Collection(DtvRedZoneModel.GetDtvGameInfo_Result)">
+          <Parameter Name="GameNumber" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetGame">
+            <Parameter Name="GameDate" Mode="In" Type="String" />
+            <Parameter Name="TricodeHome" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetGamePlayerPassing" ReturnType="Collection(DtvRedZoneModel.GetGamePlayerPassing_Result)">
+            <Parameter Name="Season" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonType" Mode="In" Type="String" />
+            <Parameter Name="Week" Mode="In" Type="Int32" />
+            <Parameter Name="Tricode" Mode="In" Type="String" />
+            <Parameter Name="JerseyNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetGamePlayerReceiving" ReturnType="Collection(DtvRedZoneModel.GetGamePlayerReceiving_Result)">
+            <Parameter Name="Season" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonType" Mode="In" Type="String" />
+            <Parameter Name="Week" Mode="In" Type="Int32" />
+            <Parameter Name="Tricode" Mode="In" Type="String" />
+            <Parameter Name="JerseyNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetGamePlayerRushing" ReturnType="Collection(DtvRedZoneModel.GetGamePlayerRushing_Result)">
+            <Parameter Name="Season" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonType" Mode="In" Type="String" />
+            <Parameter Name="Week" Mode="In" Type="Int32" />
+            <Parameter Name="Tricode" Mode="In" Type="String" />
+            <Parameter Name="JerseyNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetGameTopPerformersByTeam">
+            <Parameter Name="GameKey" Mode="In" Type="Int32" />
+            <Parameter Name="Tricode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetWeekPassingLeaders" ReturnType="Collection(DtvRedZoneModel.GetWeekPassingLeaders_Result)">
+            <Parameter Name="Season" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonType" Mode="In" Type="String" />
+            <Parameter Name="Week" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWeekReceivingLeaders" ReturnType="Collection(DtvRedZoneModel.GetWeekReceivingLeaders_Result)">
+            <Parameter Name="Season" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonType" Mode="In" Type="String" />
+            <Parameter Name="Week" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWeekRushingLeaders" ReturnType="Collection(DtvRedZoneModel.GetWeekRushingLeaders_Result)">
+            <Parameter Name="Season" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonType" Mode="In" Type="String" />
+            <Parameter Name="Week" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateGame">
+            <Parameter Name="FileSequence" Mode="In" Type="Int32" />
+            <Parameter Name="GameKey" Mode="In" Type="Int32" />
+            <Parameter Name="Week" Mode="In" Type="Int32" />
+            <Parameter Name="Season" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonType" Mode="In" Type="String" />
+            <Parameter Name="TricodeHome" Mode="In" Type="String" />
+            <Parameter Name="TricodeAway" Mode="In" Type="String" />
+            <Parameter Name="ScoreHome" Mode="In" Type="Int32" />
+            <Parameter Name="ScoreAway" Mode="In" Type="Int32" />
+            <Parameter Name="Quarter" Mode="In" Type="String" />
+            <Parameter Name="GameClock" Mode="In" Type="String" />
+            <Parameter Name="GameDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateGamePasser">
+            <Parameter Name="GameKey" Mode="In" Type="Int32" />
+            <Parameter Name="Tricode" Mode="In" Type="String" />
+            <Parameter Name="JerseyNumber" Mode="In" Type="String" />
+            <Parameter Name="PlayerName" Mode="In" Type="String" />
+            <Parameter Name="Attempts" Mode="In" Type="Int32" />
+            <Parameter Name="Completions" Mode="In" Type="Int32" />
+            <Parameter Name="CompletionPct" Mode="In" Type="String" />
+            <Parameter Name="Yards" Mode="In" Type="Int32" />
+            <Parameter Name="YardsPerAttempt" Mode="In" Type="String" />
+            <Parameter Name="TimesSacked" Mode="In" Type="Int32" />
+            <Parameter Name="SackYardsLost" Mode="In" Type="Int32" />
+            <Parameter Name="Touchdowns" Mode="In" Type="Int32" />
+            <Parameter Name="Long" Mode="In" Type="Int32" />
+            <Parameter Name="Interceptions" Mode="In" Type="Int32" />
+            <Parameter Name="Rating" Mode="In" Type="String" />
+            <Parameter Name="LongestTouchdownPass" Mode="In" Type="Int32" />
+            <Parameter Name="PlayerID" Mode="In" Type="String" />
+            <Parameter Name="StatString" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Position" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateGameReceiver">
+            <Parameter Name="GameKey" Mode="In" Type="Int32" />
+            <Parameter Name="Tricode" Mode="In" Type="String" />
+            <Parameter Name="JerseyNumber" Mode="In" Type="String" />
+            <Parameter Name="PlayerName" Mode="In" Type="String" />
+            <Parameter Name="Receptions" Mode="In" Type="Int32" />
+            <Parameter Name="Yards" Mode="In" Type="Int32" />
+            <Parameter Name="Average" Mode="In" Type="String" />
+            <Parameter Name="Long" Mode="In" Type="Int32" />
+            <Parameter Name="Touchdowns" Mode="In" Type="Int32" />
+            <Parameter Name="LongestTouchdownReception" Mode="In" Type="Int32" />
+            <Parameter Name="PassTarget" Mode="In" Type="Int32" />
+            <Parameter Name="YardsAfterCatch" Mode="In" Type="Int32" />
+            <Parameter Name="PlayerID" Mode="In" Type="String" />
+            <Parameter Name="StatString" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Position" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateGameRusher">
+            <Parameter Name="GameKey" Mode="In" Type="Int32" />
+            <Parameter Name="Tricode" Mode="In" Type="String" />
+            <Parameter Name="JerseyNumber" Mode="In" Type="String" />
+            <Parameter Name="PlayerName" Mode="In" Type="String" />
+            <Parameter Name="Attempts" Mode="In" Type="Int32" />
+            <Parameter Name="Yards" Mode="In" Type="Int32" />
+            <Parameter Name="Average" Mode="In" Type="String" />
+            <Parameter Name="Long" Mode="In" Type="Int32" />
+            <Parameter Name="Touchdowns" Mode="In" Type="Int32" />
+            <Parameter Name="LongestTouchdownRush" Mode="In" Type="Int32" />
+            <Parameter Name="PlayerID" Mode="In" Type="String" />
+            <Parameter Name="StatString" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Position" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="GamePassers" EntityType="DtvRedZoneModel.GamePasser" />
+          <EntitySet Name="GameReceivers" EntityType="DtvRedZoneModel.GameReceiver" />
+          <EntitySet Name="GameRushers" EntityType="DtvRedZoneModel.GameRusher" />
+          <EntitySet Name="Games" EntityType="DtvRedZoneModel.Game" />
+          <FunctionImport Name="GetWeekFantasyPassingLeaders" ReturnType="Collection(DtvRedZoneModel.GetWeekFantasyPassingLeaders_Result)">
+            <Parameter Name="Season" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonType" Mode="In" Type="String" />
+            <Parameter Name="Week" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWeekFantasyReceivingLeaders" ReturnType="Collection(DtvRedZoneModel.GetWeekFantasyReceivingLeaders_Result)">
+            <Parameter Name="Season" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonType" Mode="In" Type="String" />
+            <Parameter Name="Week" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWeekFantasyRushingLeaders" ReturnType="Collection(DtvRedZoneModel.GetWeekFantasyRushingLeaders_Result)">
+            <Parameter Name="Season" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonType" Mode="In" Type="String" />
+            <Parameter Name="Week" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="CurrentWeek">
+          <Key>
+            <PropertyRef Name="Season" />
+            <PropertyRef Name="SeasonType" />
+            <PropertyRef Name="Week" />
+          </Key>
+          <Property Name="Season" Type="Int32" Nullable="false" />
+          <Property Name="SeasonType" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="Week" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DtvGame">
+          <Key>
+            <PropertyRef Name="GameNumber" />
+            <PropertyRef Name="DtvTricodeHome" />
+            <PropertyRef Name="DtvTricodeAway" />
+            <PropertyRef Name="GameDate" />
+          </Key>
+          <Property Name="GameNumber" Type="Int32" Nullable="false" />
+          <Property Name="DtvTricodeHome" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="DtvTricodeAway" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="GameDate" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="Channel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Network" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="StartTime" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="DtvTrioEnginePair">
+          <Key>
+            <PropertyRef Name="TrioIp" />
+            <PropertyRef Name="EngineIp" />
+          </Key>
+          <Property Name="TrioIp" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="EngineIp" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="GameLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Tri" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Location" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Stadium" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="DtvTricode" />
+            <PropertyRef Name="NflTricode" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="TeamName" />
+            <PropertyRef Name="Conference" />
+            <PropertyRef Name="Division" />
+          </Key>
+          <Property Name="DtvTricode" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="NflTricode" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TeamName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Conference" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="Division" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="NickName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="WeekGameDate">
+          <Key>
+            <PropertyRef Name="GameDate" />
+          </Key>
+          <Property Name="GameDate" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="GetDtvGameInfo_Result">
+          <Property Type="Int32" Name="GameNumber" Nullable="false" />
+          <Property Type="String" Name="GameDate" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="DtvTricodeAway" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="NflTricodeAway" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Channel" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CityAway" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TeamNameAway" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DtvTricodeHome" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="NflTricodeHome" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="CityHome" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TeamNameHome" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadium" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetGamePlayerPassing_Result">
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PlayerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tricode" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="JerseyNumber" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="StatString" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Position" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetGamePlayerReceiving_Result">
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PlayerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tricode" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="JerseyNumber" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="StatString" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Position" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetGamePlayerRushing_Result">
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PlayerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tricode" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="JerseyNumber" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="StatString" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Position" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetWeekPassingLeaders_Result">
+          <Property Type="String" Name="PlayerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tricode" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="StatString" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Position" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetWeekReceivingLeaders_Result">
+          <Property Type="String" Name="PlayerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tricode" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="StatString" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Position" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetWeekRushingLeaders_Result">
+          <Property Type="String" Name="PlayerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tricode" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="StatString" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Position" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="GamePasser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="GameKey" />
+          <Property Type="String" Name="Tricode" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="JerseyNumber" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PlayerName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Attempts" />
+          <Property Type="Int32" Name="Completions" />
+          <Property Type="String" Name="CompletionPct" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Yards" />
+          <Property Type="String" Name="YardsPerAttempt" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TimesSacked" />
+          <Property Type="Int32" Name="SackYardsLost" />
+          <Property Type="Int32" Name="Touchdowns" />
+          <Property Type="Int32" Name="Long" />
+          <Property Type="Int32" Name="Interceptions" />
+          <Property Type="String" Name="Rating" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LongestTouchdownPass" />
+          <Property Type="String" Name="PlayerID" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StatString" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Position" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="GameReceiver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="GameKey" />
+          <Property Type="String" Name="Tricode" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="JerseyNumber" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PlayerName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Receptions" />
+          <Property Type="Int32" Name="Yards" />
+          <Property Type="String" Name="Average" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Long" />
+          <Property Type="Int32" Name="Touchdowns" />
+          <Property Type="Int32" Name="LongestTouchdownReception" />
+          <Property Type="Int32" Name="PassTarget" />
+          <Property Type="Int32" Name="YardsAfterCatch" />
+          <Property Type="String" Name="PlayerID" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StatString" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Position" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="GameRusher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="GameKey" />
+          <Property Type="String" Name="Tricode" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="JerseyNumber" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PlayerName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Attempts" />
+          <Property Type="Int32" Name="Yards" />
+          <Property Type="String" Name="Average" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Long" />
+          <Property Type="Int32" Name="Touchdowns" />
+          <Property Type="Int32" Name="LongestTouchdownRush" />
+          <Property Type="String" Name="PlayerID" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StatString" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Position" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="GameKey" />
+          <Property Type="Int32" Name="Week" />
+          <Property Type="Int32" Name="Season" />
+          <Property Type="String" Name="SeasonType" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TricodeHome" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TricodeAway" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ScoreHome" />
+          <Property Type="Int32" Name="ScoreAway" />
+          <Property Type="String" Name="Quarter" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GameClock" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FileSequence" />
+          <Property Type="String" Name="GameDate" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <ComplexType Name="GetWeekFantasyPassingLeaders_Result">
+          <Property Type="String" Name="PlayerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tricode" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="StatString" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="FantasyScore" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Position" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Completions" Nullable="true" />
+          <Property Type="Int32" Name="Attempts" Nullable="true" />
+          <Property Type="Int32" Name="Yards" Nullable="true" />
+          <Property Type="Int32" Name="Touchdowns" Nullable="true" />
+          <Property Type="Int32" Name="Interceptions" Nullable="true" />
+          <Property Type="String" Name="CompletionPct" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="YardsPerAttempt" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Long" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetWeekFantasyReceivingLeaders_Result">
+          <Property Type="String" Name="PlayerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tricode" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="StatString" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="FantasyScore" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Position" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Receptions" Nullable="true" />
+          <Property Type="Int32" Name="Yards" Nullable="true" />
+          <Property Type="Int32" Name="Touchdowns" Nullable="true" />
+          <Property Type="String" Name="Average" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="Long" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetWeekFantasyRushingLeaders_Result">
+          <Property Type="String" Name="PlayerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tricode" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="StatString" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="FantasyScore" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Position" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Attempts" Nullable="true" />
+          <Property Type="Int32" Name="Yards" Nullable="true" />
+          <Property Type="Int32" Name="Touchdowns" Nullable="true" />
+          <Property Type="String" Name="Average" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="Long" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DtvRedZoneModelStoreContainer" CdmEntityContainer="DtvRedZoneEntities">
+          <EntitySetMapping Name="CurrentWeeks">
+            <EntityTypeMapping TypeName="DtvRedZoneModel.CurrentWeek">
+              <MappingFragment StoreEntitySet="CurrentWeek">
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="SeasonType" ColumnName="SeasonType" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DtvGames">
+            <EntityTypeMapping TypeName="DtvRedZoneModel.DtvGame">
+              <MappingFragment StoreEntitySet="DtvGames">
+                <ScalarProperty Name="GameNumber" ColumnName="GameNumber" />
+                <ScalarProperty Name="DtvTricodeHome" ColumnName="DtvTricodeHome" />
+                <ScalarProperty Name="DtvTricodeAway" ColumnName="DtvTricodeAway" />
+                <ScalarProperty Name="GameDate" ColumnName="GameDate" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="Network" ColumnName="Network" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DtvTrioEnginePairs">
+            <EntityTypeMapping TypeName="DtvRedZoneModel.DtvTrioEnginePair">
+              <MappingFragment StoreEntitySet="DtvTrioEnginePairs">
+                <ScalarProperty Name="TrioIp" ColumnName="TrioIp" />
+                <ScalarProperty Name="EngineIp" ColumnName="EngineIp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameLocations">
+            <EntityTypeMapping TypeName="DtvRedZoneModel.GameLocation">
+              <MappingFragment StoreEntitySet="GameLocations">
+                <ScalarProperty Name="Tri" ColumnName="Tri" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Stadium" ColumnName="Stadium" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="DtvRedZoneModel.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="DtvTricode" ColumnName="DtvTricode" />
+                <ScalarProperty Name="NflTricode" ColumnName="NflTricode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="Conference" ColumnName="Conference" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeekGameDates">
+            <EntityTypeMapping TypeName="DtvRedZoneModel.WeekGameDate">
+              <MappingFragment StoreEntitySet="WeekGameDates">
+                <ScalarProperty Name="GameDate" ColumnName="GameDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ClearDb" FunctionName="DtvRedZoneModel.Store.ClearDb" />
+          <FunctionImportMapping FunctionImportName="DeleteGamePassers" FunctionName="DtvRedZoneModel.Store.DeleteGamePassers" />
+          <FunctionImportMapping FunctionImportName="DeleteGameReceivers" FunctionName="DtvRedZoneModel.Store.DeleteGameReceivers" />
+          <FunctionImportMapping FunctionImportName="DeleteGameRushers" FunctionName="DtvRedZoneModel.Store.DeleteGameRushers" />
+          <FunctionImportMapping FunctionImportName="GetDtvGameInfo" FunctionName="DtvRedZoneModel.Store.GetDtvGameInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DtvRedZoneModel.GetDtvGameInfo_Result">
+                <ScalarProperty Name="GameNumber" ColumnName="GameNumber" />
+                <ScalarProperty Name="GameDate" ColumnName="GameDate" />
+                <ScalarProperty Name="DtvTricodeAway" ColumnName="DtvTricodeAway" />
+                <ScalarProperty Name="NflTricodeAway" ColumnName="NflTricodeAway" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="CityAway" ColumnName="CityAway" />
+                <ScalarProperty Name="TeamNameAway" ColumnName="TeamNameAway" />
+                <ScalarProperty Name="DtvTricodeHome" ColumnName="DtvTricodeHome" />
+                <ScalarProperty Name="NflTricodeHome" ColumnName="NflTricodeHome" />
+                <ScalarProperty Name="CityHome" ColumnName="CityHome" />
+                <ScalarProperty Name="TeamNameHome" ColumnName="TeamNameHome" />
+                <ScalarProperty Name="Stadium" ColumnName="Stadium" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGame" FunctionName="DtvRedZoneModel.Store.GetGame" />
+          <FunctionImportMapping FunctionImportName="GetGamePlayerPassing" FunctionName="DtvRedZoneModel.Store.GetGamePlayerPassing">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DtvRedZoneModel.GetGamePlayerPassing_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="JerseyNumber" ColumnName="JerseyNumber" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGamePlayerReceiving" FunctionName="DtvRedZoneModel.Store.GetGamePlayerReceiving">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DtvRedZoneModel.GetGamePlayerReceiving_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="JerseyNumber" ColumnName="JerseyNumber" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGamePlayerRushing" FunctionName="DtvRedZoneModel.Store.GetGamePlayerRushing">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DtvRedZoneModel.GetGamePlayerRushing_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="JerseyNumber" ColumnName="JerseyNumber" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGameTopPerformersByTeam" FunctionName="DtvRedZoneModel.Store.GetGameTopPerformersByTeam" />
+          <FunctionImportMapping FunctionImportName="GetWeekPassingLeaders" FunctionName="DtvRedZoneModel.Store.GetWeekPassingLeaders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DtvRedZoneModel.GetWeekPassingLeaders_Result">
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWeekReceivingLeaders" FunctionName="DtvRedZoneModel.Store.GetWeekReceivingLeaders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DtvRedZoneModel.GetWeekReceivingLeaders_Result">
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWeekRushingLeaders" FunctionName="DtvRedZoneModel.Store.GetWeekRushingLeaders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DtvRedZoneModel.GetWeekRushingLeaders_Result">
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateGame" FunctionName="DtvRedZoneModel.Store.UpdateGame" />
+          <FunctionImportMapping FunctionImportName="UpdateGamePasser" FunctionName="DtvRedZoneModel.Store.UpdateGamePasser" />
+          <FunctionImportMapping FunctionImportName="UpdateGameReceiver" FunctionName="DtvRedZoneModel.Store.UpdateGameReceiver" />
+          <FunctionImportMapping FunctionImportName="UpdateGameRusher" FunctionName="DtvRedZoneModel.Store.UpdateGameRusher" />
+          <EntitySetMapping Name="GamePassers">
+            <EntityTypeMapping TypeName="DtvRedZoneModel.GamePasser">
+              <MappingFragment StoreEntitySet="GamePassers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="LongestTouchdownPass" ColumnName="LongestTouchdownPass" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Interceptions" ColumnName="Interceptions" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Touchdowns" ColumnName="Touchdowns" />
+                <ScalarProperty Name="SackYardsLost" ColumnName="SackYardsLost" />
+                <ScalarProperty Name="TimesSacked" ColumnName="TimesSacked" />
+                <ScalarProperty Name="YardsPerAttempt" ColumnName="YardsPerAttempt" />
+                <ScalarProperty Name="Yards" ColumnName="Yards" />
+                <ScalarProperty Name="CompletionPct" ColumnName="CompletionPct" />
+                <ScalarProperty Name="Completions" ColumnName="Completions" />
+                <ScalarProperty Name="Attempts" ColumnName="Attempts" />
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="JerseyNumber" ColumnName="JerseyNumber" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="GameKey" ColumnName="GameKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameReceivers">
+            <EntityTypeMapping TypeName="DtvRedZoneModel.GameReceiver">
+              <MappingFragment StoreEntitySet="GameReceivers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="YardsAfterCatch" ColumnName="YardsAfterCatch" />
+                <ScalarProperty Name="PassTarget" ColumnName="PassTarget" />
+                <ScalarProperty Name="LongestTouchdownReception" ColumnName="LongestTouchdownReception" />
+                <ScalarProperty Name="Touchdowns" ColumnName="Touchdowns" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Average" ColumnName="Average" />
+                <ScalarProperty Name="Yards" ColumnName="Yards" />
+                <ScalarProperty Name="Receptions" ColumnName="Receptions" />
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="JerseyNumber" ColumnName="JerseyNumber" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="GameKey" ColumnName="GameKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameRushers">
+            <EntityTypeMapping TypeName="DtvRedZoneModel.GameRusher">
+              <MappingFragment StoreEntitySet="GameRushers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="LongestTouchdownRush" ColumnName="LongestTouchdownRush" />
+                <ScalarProperty Name="Touchdowns" ColumnName="Touchdowns" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Average" ColumnName="Average" />
+                <ScalarProperty Name="Yards" ColumnName="Yards" />
+                <ScalarProperty Name="Attempts" ColumnName="Attempts" />
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="JerseyNumber" ColumnName="JerseyNumber" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="GameKey" ColumnName="GameKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="DtvRedZoneModel.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GameDate" ColumnName="GameDate" />
+                <ScalarProperty Name="FileSequence" ColumnName="FileSequence" />
+                <ScalarProperty Name="GameClock" ColumnName="GameClock" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="ScoreAway" ColumnName="ScoreAway" />
+                <ScalarProperty Name="ScoreHome" ColumnName="ScoreHome" />
+                <ScalarProperty Name="TricodeAway" ColumnName="TricodeAway" />
+                <ScalarProperty Name="TricodeHome" ColumnName="TricodeHome" />
+                <ScalarProperty Name="SeasonType" ColumnName="SeasonType" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="GameKey" ColumnName="GameKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetWeekFantasyPassingLeaders" FunctionName="DtvRedZoneModel.Store.GetWeekFantasyPassingLeaders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DtvRedZoneModel.GetWeekFantasyPassingLeaders_Result">
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="FantasyScore" ColumnName="FantasyScore" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Completions" ColumnName="Completions" />
+                <ScalarProperty Name="Attempts" ColumnName="Attempts" />
+                <ScalarProperty Name="Yards" ColumnName="Yards" />
+                <ScalarProperty Name="Touchdowns" ColumnName="Touchdowns" />
+                <ScalarProperty Name="Interceptions" ColumnName="Interceptions" />
+                <ScalarProperty Name="CompletionPct" ColumnName="CompletionPct" />
+                <ScalarProperty Name="YardsPerAttempt" ColumnName="YardsPerAttempt" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWeekFantasyReceivingLeaders" FunctionName="DtvRedZoneModel.Store.GetWeekFantasyReceivingLeaders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DtvRedZoneModel.GetWeekFantasyReceivingLeaders_Result">
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="FantasyScore" ColumnName="FantasyScore" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Receptions" ColumnName="Receptions" />
+                <ScalarProperty Name="Yards" ColumnName="Yards" />
+                <ScalarProperty Name="Touchdowns" ColumnName="Touchdowns" />
+                <ScalarProperty Name="Average" ColumnName="Average" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWeekFantasyRushingLeaders" FunctionName="DtvRedZoneModel.Store.GetWeekFantasyRushingLeaders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DtvRedZoneModel.GetWeekFantasyRushingLeaders_Result">
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="Tricode" ColumnName="Tricode" />
+                <ScalarProperty Name="StatString" ColumnName="StatString" />
+                <ScalarProperty Name="FantasyScore" ColumnName="FantasyScore" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Attempts" ColumnName="Attempts" />
+                <ScalarProperty Name="Yards" ColumnName="Yards" />
+                <ScalarProperty Name="Touchdowns" ColumnName="Touchdowns" />
+                <ScalarProperty Name="Average" ColumnName="Average" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="RCS.DTV.RZC.Views.FantasyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+             xmlns:model="clr-namespace:RCS.DTV.RZC.Models"
+             xmlns:metro="clr-namespace:Elysium.Controls;assembly=Elysium"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="1230"
+             DataContext="{Binding Source={StaticResource Locator}, Path=FantasyViewModel}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="PasserTemp" DataType="{x:Type model:TopPassers}">
+            <StackPanel Orientation="Horizontal">
+                <!--<TextBlock Text="{Binding Picture}" Margin="4,0"/>-->
+                <TextBlock Text="{Binding Name}" Margin="4,0"/>
+                <TextBlock Text="{Binding Position}" Margin="4,0"/>
+                <TextBlock Text="{Binding Completions}" Margin="4,0"/>
+                <TextBlock Text="{Binding Attempts}" Margin="4,0"/>
+                <TextBlock Text="{Binding Yards}" Margin="4,0"/>
+                <TextBlock Text="{Binding Touchdowns}" Margin="4,0"/>
+                <TextBlock Text="{Binding Interceptions}" Margin="4,0"/>
+                <TextBlock Text="{Binding CompletionPCT}" Margin="4,0"/>
+                <TextBlock Text="{Binding Long}" Margin="4,0"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="RusherTemp" DataType="{x:Type model:TopRushers}">
+            <StackPanel Orientation="Horizontal">
+                <!--<TextBlock Text="{Binding Picture}" Margin="4,0"/>-->
+                <TextBlock Text="{Binding Name}" Margin="4,0"/>
+                <TextBlock Text="{Binding Position}" Margin="4,0"/>
+                <TextBlock Text="{Binding Attempts}" Margin="4,0"/>
+                <TextBlock Text="{Binding Yards}" Margin="4,0"/>
+                <TextBlock Text="{Binding Touchdowns}" Margin="4,0"/>
+                <TextBlock Text="{Binding Average}" Margin="4,0"/>
+                <TextBlock Text="{Binding Long}" Margin="4,0"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="ReceiverTemp" DataType="{x:Type model:TopReceivers}">
+            <StackPanel Orientation="Horizontal">
+                <!--<TextBlock Text="{Binding Picture}" Margin="4,0"/>-->
+                <TextBlock Text="{Binding Name}" Margin="4,0"/>
+                <TextBlock Text="{Binding Position}" Margin="4,0"/>
+                <TextBlock Text="{Binding Receptions}" Margin="4,0"/>
+                <TextBlock Text="{Binding Yards}" Margin="4,0"/>
+                <TextBlock Text="{Binding Touchdowns}" Margin="4,0"/>
+                <TextBlock Text="{Binding Average}" Margin="4,0"/>
+                <TextBlock Text="{Binding Long}" Margin="4,0"/>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52*"/>
+            <RowDefinition Height="205*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="210*"/>
+            <RowDefinition Height="120*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="TOP PASSERS" Foreground="White" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="TOP RUSHERS" Foreground="White" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" />
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="TOP RECEIVERS" Foreground="White" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32"  />
+
+        <Image Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding TopPasserPicture, Converter={StaticResource PathToImageConverter}}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseUp">
+                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadPasserPic" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
+        <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding TopRusherPicture, Converter={StaticResource PathToImageConverter}}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseUp">
+                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadRusherPic" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
+        <Image Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding TopReceiverPicture, Converter={StaticResource PathToImageConverter}}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseUp">
+                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadReceiverPic" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
+
+        <!--<Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+            <metro:ProgressRing State="Busy" Width="60" IsEnabled="True" />
+        </Grid>-->
+        <!--<DataGrid AutoGenerateColumns="True" Margin="10" Grid.Row="1" Grid.Column="0" IsReadOnly="True" GridLinesVisibility="None"
+            ItemsSource="{Binding Path=TopPassers, Mode=OneWay}" CanUserAddRows="False"/>-->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="0, 25, 0, 0">
+            <TextBlock Text="NAME" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 3, 0"/>
+            <TextBlock Text="POS" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="CMP" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="ATT" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="YDS" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="TD" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="INT" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="CMP%" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="AVG" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="LNG" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+        </StackPanel>
+        
+        <ListBox Grid.Row="3" Grid.Column="0" Margin="5" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ItemsSource="{Binding TopPassers}" ItemTemplate="{StaticResource PasserTemp}"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="45, 25, 0, 0">
+            <TextBlock Text="NAME" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 3, 0"/>
+            <TextBlock Text="POS" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="RUSH ATT" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="YDS" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="TD" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="AVG" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="LNG" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+        </StackPanel>
+        
+        <ListBox Grid.Row="3" Grid.Column="1" Margin="5" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ItemsSource="{Binding TopRushers}" ItemTemplate="{StaticResource RusherTemp}"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Margin="65, 25, 0, 0">
+            <TextBlock Text="NAME" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 3, 0"/>
+            <TextBlock Text="POS" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="REC" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="YDS" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="TD" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="AVG" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+            <TextBlock Text="LNG" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 0"/>
+        </StackPanel>
+        
+        <ListBox Grid.Row="3" Grid.Column="2" Margin="5" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ItemsSource="{Binding TopReceivers}" ItemTemplate="{StaticResource ReceiverTemp}"/>
+
+        <ToggleButton Content="MANUALLY SET PICTURES" Grid.Row="4" Grid.Column="0" Margin="26,43,26,44">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Checked">
+                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="ManualPictures"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="Unchecked">
+                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="DefaultPictures"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ToggleButton>
+        <!--<Button Grid.Row="4" Grid.Column="0" Content="RELOAD TOP PLAYERS" Margin="26,43,26,44">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="ReloadTopPlayers"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>-->
+        <Button Grid.Row="4" Grid.Column="1" Content="SET DEFAULT PICTURES" Margin="26,43,26,44">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetDefaultPictures"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <Button Grid.Row="4" Grid.Column="2" Content="SET TOP PLAYERS" Margin="26,43,26,44">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTopPlayers"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+    </Grid>
+</UserControl>

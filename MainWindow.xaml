@@ -1,0 +1,405 @@
+﻿<metro:Window x:Class="RCS.DTV.RZC.MainWindow"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:metro="http://schemas.codeplex.com/elysium"
+              xmlns:params="http://schemas.codeplex.com/elysium/params"
+              xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+              xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+              xmlns:views="clr-namespace:RCS.DTV.RZC.Views"
+              xmlns:tog="clr-namespace:ToggleSwitch;assembly=ToggleSwitch"
+              WindowStartupLocation="CenterOwner"
+              SizeToContent="WidthAndHeight"
+              Background="#171717"
+              params:Design.Theme="Dark"
+              params:Design.AccentBrush="{x:Static metro:AccentBrushes.Red}"
+              params:Design.ContrastBrush="White"
+              Title="Red Zone Channel" Height="825" Width="1510" ResizeMode="CanMinimize"
+              DataContext="{Binding Source={StaticResource Locator}, Path=MainPageViewModel}" 
+              BorderBrush="{x:Static metro:AccentBrushes.Red}" BorderThickness="3" WindowStyle="None"
+              FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham" Icon="..\Assets\rzc_app_icon_square.ico">
+    <!--Icon="..\Assets\rzc_icon.ico"-->
+
+    <metro:Window.TitleBar>
+        <Grid Background="{x:Static metro:AccentBrushes.Red}" MouseLeftButtonDown="DragWindow" Height="40" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                <TextBlock  Margin="10, 0, 0, 0" Text="LAUNCH" VerticalAlignment="Center"
+                           Foreground="White" FontWeight="ExtraLight" FontSize="18"
+                           FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham" />
+                <TextBlock Text="PAD" VerticalAlignment="Center"
+                           Foreground="White" FontWeight="UltraBold" FontSize="18"
+                           FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham" />
+                </StackPanel>
+            <Button Grid.Column="2" Content="?" Width="30" HorizontalAlignment="Center" Click="OpenAboutWindow" />
+            <Button Grid.Column="3" Content="_" Width="30" HorizontalAlignment="Center" Click="MinimizeWindow" />
+            <Button Grid.Column="4" Content="X" Width="30" HorizontalAlignment="Center" Click="CloseWindow" />
+        </Grid>
+    </metro:Window.TitleBar>
+    <!--<controls:ProgressRing IsActive="True" Foreground="Aqua"/>
+    <metro:ProgressRing State="Busy" Width="60" IsEnabled="True"/>
+    <metro:ProgressBar Orientation="Horizontal" Width="200" IsEnabled="True" State="Busy" Foreground="Yellow" />-->
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1240*"/>
+            <ColumnDefinition Width="259*"/>
+        </Grid.ColumnDefinitions>
+        <controls:MetroContentControl>
+            <TabControl Grid.Column="0" TabStripPlacement="Top" HorizontalAlignment="Left" Height="790" VerticalAlignment="Top" Width="1240" BorderBrush="Transparent">
+                <TabItem Header="FANTASY" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                    <views:FantasyView />
+                </TabItem>
+
+                <TabItem Header="MAP" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                    <views:MapView/>
+                </TabItem>
+
+                <!--<TabItem Header="SPONSOR PICKS" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                    <views:SponsorPicksView/>
+                </TabItem>-->
+
+                <TabItem Header="LIVE" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                    <views:LiveVideoView/>
+                </TabItem>
+
+                <!--<TabItem Header="REPLAY" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                    <views:ReplayView/>
+                </TabItem>-->
+
+                <TabItem Header="BANGED UP" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                    <views:InjuryView/>
+                </TabItem>
+
+                <!--<TabItem Header="Highlights">
+                    <GroupBox Header="Groupbox" Margin="100" FontSize="15" FontWeight="DemiBold" Foreground="White" BorderBrush="DarkRed">
+                    </GroupBox>
+                </TabItem>-->
+
+                <TabItem Header="AFC PLAYOFFS" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                    <views:AfcDivisionView/>
+                </TabItem>
+
+                <TabItem Header="NFC PLAYOFFS" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                    <views:NfcDivisionView/>
+                </TabItem>
+
+                <TabItem Header="SCHEDULE">
+                    <views:ScheduleView/>
+                </TabItem>
+            </TabControl>
+        </controls:MetroContentControl>
+        
+        <StackPanel Grid.Column="1" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Width="259" Height="773">
+            <GroupBox Header="CONNECTIONS" FontSize="15" BorderBrush="DarkRed" Foreground="White" Margin="0, 50, 0, 55" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Margin="0, 10">
+                        <TextBlock Text="Viz Connection" x:Name="VizLabel" FontSize="15" Margin="20, 0" />
+                        <!--<tog:HorizontalToggleSwitch Margin="30, 0, 0, 0" ThumbSize="25" Width="55" FontSize="10" IsChecked="{Binding IsVizConnected, Mode=TwoWay}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ThumbTemplate="{StaticResource GroovedThumbTemplate}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="ConnectViz"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Unchecked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="DisconnectViz"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </tog:HorizontalToggleSwitch>-->
+                        <metro:ToggleSwitch x:Name="VizStatus" Margin="8, 0, 0, 0" OnHeader="On" OffHeader="Off" IsChecked="{Binding IsVizConnected}" Width="80">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="ConnectViz"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Unchecked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="DisconnectViz"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </metro:ToggleSwitch>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0, 10">
+                        <TextBlock Text="iPad Connection" FontSize="15" Margin="20, 0, 12, 0"/>
+                        <metro:ToggleSwitch Margin="6, 0, 0, 0" OnHeader="On" OffHeader="Off" IsChecked="{Binding IsIPadConnected}" Width="80">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="ConnectIPad"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Unchecked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="DisconnectIPad"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </metro:ToggleSwitch>
+                        <!--<tog:HorizontalToggleSwitch Margin="30, 0, 0, 0" ThumbSize="25" Width="55" FontSize="10" IsChecked="{Binding IsIPadConnected, Mode=TwoWay}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ThumbTemplate="{StaticResource GroovedThumbTemplate}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="ConnectIPad"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Unchecked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="DisconnectIPad"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </tog:HorizontalToggleSwitch>-->
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0, 10">
+                        <TextBlock Text="Console" FontSize="15" Margin="20, 0,67, 0"/>
+                        <!--<tog:HorizontalToggleSwitch Margin="30, 0, 0, 0" ThumbSize="25" Width="55" FontSize="10" IsChecked="{Binding IsConsoleOn}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ThumbTemplate="{StaticResource GroovedThumbTemplate}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="TurnOnConsole"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Unchecked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="TurnOffConsole"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </tog:HorizontalToggleSwitch>-->
+                        <metro:ToggleSwitch Margin="15, 0, 0, 0" OnHeader="On" OffHeader="Off" IsEnabled="True" IsChecked="{Binding IsConsoleOn}" Width="80">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="TurnOnConsole"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Unchecked">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="TurnOffConsole"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </metro:ToggleSwitch>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <!--<GroupBox Header="MAIN LOGO" Margin="0, 5" FontSize="15" BorderBrush="DarkRed" Foreground="White" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                <views:MainLogoView/>
+            </GroupBox>-->
+
+            <GroupBox Header="SPONSOR LOGO" Margin="0, 50" FontSize="15" BorderBrush="DarkRed" Foreground="White" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                <views:SponsorLogoView />
+            </GroupBox>
+            <!--<GroupBox Header="Playoff Logos" Margin="0, 5" FontSize="15" BorderBrush="DarkRed" Foreground="White">
+                <views:PlayoffView/>
+            </GroupBox>-->
+            <!--<tog:HorizontalToggleSwitch ThumbSize="30" Width="60" Style="{StaticResource MetroToggleSwitchStyle}"/>-->
+
+            <GroupBox Header="MENU SELECTION" Margin="0, 50" FontSize="15" BorderBrush="DarkRed" Foreground="White" FontFamily="/RCS.DTV.RZC;component/Resources/#Gotham">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Vertical">
+                        <!--Changed IsEnabled to BothConnected--> 
+                        <StackPanel Orientation="Horizontal" Margin="5, 8">
+                            <CheckBox IsEnabled="{Binding IsVizConnected}" IsChecked="{Binding FantasyChecked}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                            <TextBlock Text="FANTASY"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5, 8">
+                            <CheckBox IsEnabled="{Binding IsVizConnected}" IsChecked="{Binding MapChecked}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                            <TextBlock Text="MAP"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5, 8">
+                            <CheckBox IsEnabled="{Binding IsVizConnected}" IsChecked="{Binding SponsorChecked}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                            <TextBlock Text="LIVE"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5, 8">
+                            <CheckBox IsEnabled="{Binding IsVizConnected}" IsChecked="{Binding LiveChecked}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                            <TextBlock Text="SPONSOR"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="0, 8">
+                            <CheckBox IsEnabled="{Binding IsVizConnected}" IsChecked="{Binding ReplayChecked}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                            <TextBlock Text="BANGED UP"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0, 8">
+                            <CheckBox IsEnabled="{Binding IsVizConnected}" IsChecked="{Binding PlayoffChecked}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                            <TextBlock Text="PLAYOFF"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0, 8">
+                            <CheckBox IsEnabled="{Binding IsVizConnected}" IsChecked="{Binding SocialChecked}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetMainMenu"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                            <TextBlock Text="SOCIAL"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+
+    <!--<metro:Window.ApplicationBar>
+        <metro:ApplicationBar>
+            <metro:CommandButton Header="Notification" Click="Notifications">
+                <Rectangle Fill="Black" Stroke="Black" Width="24" Height="12"/>
+            </metro:CommandButton>
+            <metro:CommandButton metro:ApplicationBar.Dock="Right"/>
+        </metro:ApplicationBar>
+    </metro:Window.ApplicationBar>-->
+
+    <metro:Window.ApplicationBar>
+        <metro:ApplicationBar>
+            <metro:DropDownCommandButton Header="Viz Config" Click="OpenConfigWindow"
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}">
+                <Glyphs x:Name="ThemeGlyph"
+                        FontUri = "Resources\GOTHMMED.ttf"
+                        FontRenderingEmSize="24"
+                        StyleSimulations="BoldSimulation"
+                        UnicodeString="V"
+                        Fill="White"
+                        OriginX="0" OriginY="0"/>
+                <!--<metro:DropDownCommandButton.Submenu>
+                    <metro:Submenu>
+                        <MenuItem Header="Option 1"
+                                  />
+                        <MenuItem Header="Option 2"
+                                  />
+                    </metro:Submenu>
+                </metro:DropDownCommandButton.Submenu>-->
+            </metro:DropDownCommandButton>
+            <metro:DropDownCommandButton Header="Load Scene"
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}">
+                <Glyphs x:Name="AccentGlyph"
+                        FontRenderingEmSize="24"
+                        FontUri = "Resources\GOTHMMED.ttf"
+                        StyleSimulations="BoldSimulation"
+                        UnicodeString="L"
+                        Fill="Black"
+                        OriginX="0" OriginY="0"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadScene"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <!--<metro:DropDownCommandButton.Submenu>
+                    <metro:Submenu>
+                        <MenuItem Header="Blue">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Blue}" Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Green">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Green}" Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Viridian">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Viridian}" Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Violet">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Violet}" Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </metro:Submenu>
+                </metro:DropDownCommandButton.Submenu>-->
+            </metro:DropDownCommandButton>
+            <metro:DropDownCommandButton Header="iPad Config" Click="OpenIPadWindow"
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}">
+                <Glyphs FontUri = "Resources\GOTHMMED.ttf"
+                        FontRenderingEmSize="24"
+                        StyleSimulations="BoldSimulation"
+                        UnicodeString="I"
+                        Fill="White"
+                        OriginX="0" OriginY="0"/>
+            </metro:DropDownCommandButton>
+            <metro:DropDownCommandButton Header="Connect Router"
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}">
+            <Glyphs     FontRenderingEmSize="24"
+                        FontUri = "Resources\GOTHMMED.ttf"
+                        StyleSimulations="BoldSimulation"
+                        UnicodeString="R"
+                        Fill="Black"
+                        OriginX="0" OriginY="0"/>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="ConnectRouter"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            </metro:DropDownCommandButton>
+            <!--<metro:CommandButton Header="Notification" Click="Notifications"
+                                 Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}">
+                <Rectangle Fill="Black" Stroke="Black" Width="24" Height="12"/>
+            </metro:CommandButton>
+            <metro:DropDownCommandButton Header="More" metro:ApplicationBar.Dock="Right"
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}">
+                <Path Data="{StaticResource AdvancedIcon}"
+                      Fill="Black"
+                      Stroke="Black"
+                      Width="24" Height="24"/>
+                <metro:DropDownCommandButton.Submenu>
+                    <metro:Submenu>
+                        <MenuItem Header="Link 1" />
+                        <MenuItem Header="Link 2" />
+                        <MenuItem Header="Link 3" />
+                    </metro:Submenu>
+                </metro:DropDownCommandButton.Submenu>
+            </metro:DropDownCommandButton>-->
+        </metro:ApplicationBar>
+    </metro:Window.ApplicationBar>
+
+</metro:Window>

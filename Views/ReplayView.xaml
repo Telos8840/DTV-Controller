@@ -1,0 +1,176 @@
+﻿<UserControl x:Class="RCS.DTV.RZC.Views.ReplayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+             xmlns:model="clr-namespace:RCS.DTV.RZC.Models"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="1230"
+             DataContext="{Binding Source={StaticResource Locator}, Path=ReplayViewModel}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="Teams" DataType="{x:Type model:CoreTeams}">
+            <TextBlock Text="{Binding Name}" Margin="0, 7.6, 0, 0" />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid Margin="40, 20, 40, 40">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Column="0" Margin="0, 30, 0, 0">
+            <GroupBox Header="INPUT SETUP" Padding="10" FontSize="15" BorderBrush="DarkRed" Foreground="White" Height="120">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Num of Inputs"/>
+                        <ComboBox ItemsSource="{Binding Inputs}" SelectedItem="{Binding SelectedInput}" Height="30" Width="40" Margin="20">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="EnableInputs"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="15, 0, 0, 0">
+                        <TextBlock Text="Num of Groups"/>
+                        <ComboBox ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedGroup}" Height="30" Width="40" Margin="20">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="EnableGroups"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="SWAP GROUP" Margin="0, 50, 0, 0" Padding="10" FontSize="15" BorderBrush="DarkRed" Foreground="White" Height="120">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 15">
+                        <TextBlock Text="Group" Margin="7, 0" FontSize="25" Foreground="White" />
+                        <TextBlock Text="{Binding ElementName=GroupSlider, Path=Value}" FontSize="25" Foreground="White" />
+                    </StackPanel>
+                    <Slider x:Name="GroupSlider" Value="{Binding GroupNumber}" IsEnabled="{Binding AreBothSet}" TickFrequency="1" IsSnapToTickEnabled="True" Minimum="0" Maximum="{Binding SelectedGroup}" AutoToolTipPlacement="BottomRight" Width="250" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="ValueChanged">
+                                <ei:CallMethodAction TargetObject="{Binding}" MethodName="ChangeColors"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Slider>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="SET WEEK" Padding="10" FontSize="15" BorderBrush="DarkRed" Foreground="White" Height="120" Margin="0, 50">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom" Margin="0, 0, 0, 10">
+                        <TextBlock Text="Week" Margin="7, 0" FontSize="25" Foreground="White" />
+                        <TextBlock Text="{Binding ElementName=Slider, Path=Value}" FontSize="25" Foreground="White" />
+                    </StackPanel>
+                    <Slider x:Name="Slider" Value="{Binding WeekNumber}" TickFrequency="1"
+                            IsSnapToTickEnabled="True" Grid.ColumnSpan="4" Margin="0, 0, 0, -20" Minimum="0"
+                            Maximum="17" AutoToolTipPlacement="BottomRight" Width="250" HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="ValueChanged">
+                                <ei:CallMethodAction TargetObject="{Binding}" MethodName="GetTeams" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Slider>
+                </StackPanel>
+            </GroupBox>
+            <Button Grid.Row="3" Grid.Column="2" Content="SET REPLAY VIDEOS" Height="40" Width="285">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetLiveVideos"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="INPUT-GROUP" Grid.Row="0" Foreground="White" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" Height="32"/>
+            <ComboBox Grid.Row="1" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[0]}" Height="30" Width="55" BorderBrush="{Binding Brushes[0]}"/>
+            <ComboBox Grid.Row="2" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[1]}" Height="30" Width="55" BorderBrush="{Binding Brushes[1]}"/>
+            <ComboBox Grid.Row="3" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[2]}" Height="30" Width="55" BorderBrush="{Binding Brushes[2]}"/>
+            <ComboBox Grid.Row="4" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[3]}" Height="30" Width="55" BorderBrush="{Binding Brushes[3]}"/>
+            <ComboBox Grid.Row="5" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[4]}" Height="30" Width="55" BorderBrush="{Binding Brushes[4]}"/>
+            <ComboBox Grid.Row="6" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[5]}" Height="30" Width="55" BorderBrush="{Binding Brushes[5]}"/>
+            <ComboBox Grid.Row="7" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[6]}" Height="30" Width="55" BorderBrush="{Binding Brushes[6]}"/>
+            <ComboBox Grid.Row="8" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[7]}" Height="30" Width="55" BorderBrush="{Binding Brushes[7]}"/>
+            <ComboBox Grid.Row="9" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[8]}" Height="30" Width="55" BorderBrush="{Binding Brushes[8]}"/>
+            <ComboBox Grid.Row="10" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[9]}" Height="30" Width="55" BorderBrush="{Binding Brushes[9]}"/>
+            <ComboBox Grid.Row="11" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[10]}" Height="30" Width="55" BorderBrush="{Binding Brushes[10]}"/>
+            <ComboBox Grid.Row="12" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[11]}" Height="30" Width="55" BorderBrush="{Binding Brushes[11]}"/>
+            <ComboBox Grid.Row="13" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[12]}" Height="30" Width="55" BorderBrush="{Binding Brushes[12]}"/>
+            <ComboBox Grid.Row="14" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[13]}" Height="30" Width="55" BorderBrush="{Binding Brushes[13]}"/>
+            <ComboBox Grid.Row="15" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[14]}" Height="30" Width="55" BorderBrush="{Binding Brushes[14]}"/>
+            <ComboBox Grid.Row="16" IsEnabled="{Binding IsAllSet}" ItemsSource="{Binding VideoInputs}" SelectedItem="{Binding SelectedVideoInput[15]}" Height="30" Width="55" BorderBrush="{Binding Brushes[15]}"/>
+        </Grid>
+        <!--<Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            
+            
+        </Grid>-->
+
+        <StackPanel Orientation="Vertical" Grid.Column="2">
+            <TextBlock Text="AWAY TEAMS" Foreground="White" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" Height="32"/>
+            <ListBox Margin="10" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ItemsSource="{Binding SelectedAwayTeams}" ItemTemplate="{StaticResource Teams}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="3">
+            <TextBlock Text="HOME TEAMS" Foreground="White" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" Height="32"/>
+            <ListBox Margin="10" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ItemsSource="{Binding SelectedHomeTeams}" ItemTemplate="{StaticResource Teams}"/>
+        </StackPanel>
+
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FB67EAF-44BD-468B-A73B-4B4F9B7561E4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RCS.DTV.RZC</RootNamespace>
+    <AssemblyName>RCS.DTV.RZC</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>rzc_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="Elysium, Version=2.0.976.0, Culture=neutral, PublicKeyToken=afa220db249e5b15, processorArchitecture=MSIL" />
+    <Reference Include="Elysium.Notifications, Version=2.0.62.0, Culture=neutral, PublicKeyToken=afa220db249e5b15, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=0.10.0.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MahApps.Metro.0.10.1.1\lib\net40\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleMvvmToolkit.WPF.3.1.0.0\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="RCS.Interop.Viz">
+      <HintPath>..\packages\RCS.Interop.Viz.3.2.1.0\lib\net40-Client\RCS.Interop.Viz.dll</HintPath>
+    </Reference>
+    <Reference Include="RCS.Runtime.Serialization">
+      <HintPath>..\packages\RCS.Runtime.Serialization.1.4\lib\net40\RCS.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="SimpleMvvmToolkit-WPF, Version=3.1.0.0, Culture=neutral, PublicKeyToken=20fad5ed49a0c3b4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SimpleMvvmToolkit.WPF.3.1.0.0\lib\net40\SimpleMvvmToolkit-WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleMvvmToolkit.WPF.3.1.0.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TargaImage">
+      <HintPath>..\..\..\..\Desktop\GolfMegaTopicBar\RCS.GOLF.MORNINGDRIVESUPERTOPICBAR\bin\Debug\TargaImage.dll</HintPath>
+    </Reference>
+    <Reference Include="ToggleSwitch">
+      <HintPath>..\packages\ToggleSwitch.1.1\lib\net40-client\ToggleSwitch.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converters\PathToImageConverter.cs" />
+    <Compile Include="Converters\PathToLogoConverter.cs" />
+    <Compile Include="Converters\TeamLogoImgConverter.cs" />
+    <Compile Include="Converters\WeatherLogoConverter.cs" />
+    <Compile Include="Helpers\ConsoleManager.cs" />
+    <Compile Include="Helpers\FeedbackCoordinator.cs" />
+    <Compile Include="Helpers\FeedbackHandler.cs" />
+    <Compile Include="Helpers\iPad.cs" />
+    <Compile Include="Helpers\RouterControl.cs" />
+    <Compile Include="Helpers\TCPClient.cs" />
+    <Compile Include="Helpers\VizEngine.cs" />
+    <Compile Include="Models\Config.cs" />
+    <Compile Include="Models\CoreTeams.cs" />
+    <Compile Include="Models\CurrentSession.cs" />
+    <Compile Include="Models\CurrentWeek.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DtvDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtvDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DtvDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DtvDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtvDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DtvGame.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DtvTrioEnginePair.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Game.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameLocation.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GamePasser.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameReceiver.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameRusher.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetDtvGameInfo_Result.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetGamePlayerPassing_Result.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetGamePlayerReceiving_Result.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetGamePlayerRushing_Result.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetWeekFantasyPassingLeaders_Result.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetWeekFantasyReceivingLeaders_Result.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetWeekFantasyRushingLeaders_Result.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetWeekPassingLeaders_Result.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetWeekReceivingLeaders_Result.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetWeekRushingLeaders_Result.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Injuries.cs" />
+    <Compile Include="Models\LiveVideo.cs" />
+    <Compile Include="Models\MainLogo.cs" />
+    <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\Playoff.cs" />
+    <Compile Include="Models\PlayoffDivisions.cs" />
+    <Compile Include="Models\Replays.cs" />
+    <Compile Include="Models\Route.cs" />
+    <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\SponsorLogo.cs" />
+    <Compile Include="Models\SponsorPicks.cs" />
+    <Compile Include="Models\Team.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TopPassers.cs" />
+    <Compile Include="Models\TopReceivers.cs" />
+    <Compile Include="Models\TopRushers.cs" />
+    <Compile Include="Models\WeekGameDate.cs">
+      <DependentUpon>DtvDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ConfigServiceAgent.cs" />
+    <Compile Include="Services\FantasyServiceAgent.cs" />
+    <Compile Include="Services\IConfigServiceAgent.cs" />
+    <Compile Include="Services\IFantasyServiceAgent.cs" />
+    <Compile Include="Services\IInjuryServiceAgent.cs" />
+    <Compile Include="Services\IiPadServiceAgent.cs" />
+    <Compile Include="Services\ILiveVideoServiceAgent.cs" />
+    <Compile Include="Services\IMainLogoServiceAgent.cs" />
+    <Compile Include="Services\IMapServiceAgent.cs" />
+    <Compile Include="Services\InjuryServiceAgent.cs" />
+    <Compile Include="Services\iPadServiceAgent.cs" />
+    <Compile Include="Services\IPlayoffDivisionServiceAgent.cs" />
+    <Compile Include="Services\IPlayoffServiceAgent.cs" />
+    <Compile Include="Services\IReplayServiceAgent.cs" />
+    <Compile Include="Services\IScheduleServiceAgent.cs" />
+    <Compile Include="Services\ISponsorLogoServiceAgent.cs" />
+    <Compile Include="Services\ISponsorPickServiceAgent.cs" />
+    <Compile Include="Services\LiveVideoServiceAgent.cs" />
+    <Compile Include="Services\MainLogoServiceAgent.cs" />
+    <Compile Include="Services\MapServiceAgent.cs" />
+    <Compile Include="Services\PlayoffDivisionServiceAgent.cs" />
+    <Compile Include="Services\PlayoffServiceAgent.cs" />
+    <Compile Include="Services\ReplayServiceAgent.cs" />
+    <Compile Include="Services\ScheduleServiceAgent.cs" />
+    <Compile Include="Services\SponsorLogoServiceAgent.cs" />
+    <Compile Include="Services\SponsorPickServiceAgent.cs" />
+    <Compile Include="UI\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IPadWindow.xaml.cs">
+      <DependentUpon>IPadWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\VizConfigWindow.xaml.cs">
+      <DependentUpon>VizConfigWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ConfigViewModel.cs" />
+    <Compile Include="ViewModels\FantasyViewModel.cs" />
+    <Compile Include="ViewModels\InjuryViewModel.cs" />
+    <Compile Include="ViewModels\IPadViewModel.cs" />
+    <Compile Include="ViewModels\LiveVideoViewModel.cs" />
+    <Compile Include="ViewModels\MainLogoViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\AfcDivisionViewModel.cs" />
+    <Compile Include="ViewModels\MapViewModel.cs" />
+    <Compile Include="ViewModels\NfcDivisionViewModel.cs" />
+    <Compile Include="ViewModels\PlayoffViewModel.cs" />
+    <Compile Include="ViewModels\ReplayViewModel.cs" />
+    <Compile Include="ViewModels\ScheduleViewModel.cs" />
+    <Compile Include="ViewModels\SponsorLogoViewModel.cs" />
+    <Compile Include="ViewModels\SponsorPickViewModel.cs" />
+    <Compile Include="Views\FantasyView.xaml.cs">
+      <DependentUpon>FantasyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InjuryView.xaml.cs">
+      <DependentUpon>InjuryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LiveVideoView.xaml.cs">
+      <DependentUpon>LiveVideoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainLogoView.xaml.cs">
+      <DependentUpon>MainLogoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AfcDivisionView.xaml.cs">
+      <DependentUpon>AfcDivisionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapView.xaml.cs">
+      <DependentUpon>MapView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NfcDivisionView.xaml.cs">
+      <DependentUpon>NfcDivisionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayoffView.xaml.cs">
+      <DependentUpon>PlayoffView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReplayView.xaml.cs">
+      <DependentUpon>ReplayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScheduleView.xaml.cs">
+      <DependentUpon>ScheduleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SponsorLogoView.xaml.cs">
+      <DependentUpon>SponsorLogoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SponsorPicksView.xaml.cs">
+      <DependentUpon>SponsorPicksView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Locators\ViewModelLocator.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\IPadWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\VizConfigWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FantasyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InjuryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LiveVideoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainLogoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AfcDivisionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MapView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NfcDivisionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlayoffView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReplayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ScheduleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SponsorLogoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SponsorPicksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Resource Include="Resources\GOTHMMED.TTF" />
+    <Resource Include="Resources\verdana.ttf" />
+    <Resource Include="Resources\Entypo.ttf" />
+    <EntityDeploy Include="Models\DtvDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DtvDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\DtvDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DtvDb.edmx</DependentUpon>
+      <LastGenOutput>DtvDb.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\DtvDb.edmx.diagram">
+      <DependentUpon>DtvDb.edmx</DependentUpon>
+    </None>
+    <None Include="Models\DtvDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DtvDb.edmx</DependentUpon>
+      <LastGenOutput>DtvDb.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Entypo-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MVVM.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\rcs32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="rcs32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SimpleMvvmReadme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\LogoPlaceholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\HeadshotPlaceholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ARI.png" />
+    <Resource Include="Assets\ATL.png" />
+    <Resource Include="Assets\BAL.png" />
+    <Resource Include="Assets\BUF.png" />
+    <Resource Include="Assets\CAR.png" />
+    <Resource Include="Assets\CHI.png" />
+    <Resource Include="Assets\CIN.png" />
+    <Resource Include="Assets\CLE.png" />
+    <Resource Include="Assets\DAL.png" />
+    <Resource Include="Assets\DEN.png" />
+    <Resource Include="Assets\DET.png" />
+    <Resource Include="Assets\GB.png" />
+    <Resource Include="Assets\HOU.png" />
+    <Resource Include="Assets\IND.png" />
+    <Resource Include="Assets\JAC.png" />
+    <Resource Include="Assets\KC.png" />
+    <Resource Include="Assets\MIA.png" />
+    <Resource Include="Assets\MIN.png" />
+    <Resource Include="Assets\NE.png" />
+    <Resource Include="Assets\NO.png" />
+    <Resource Include="Assets\NYG.png" />
+    <Resource Include="Assets\NYJ.png" />
+    <Resource Include="Assets\OAK.png" />
+    <Resource Include="Assets\PHI.png" />
+    <Resource Include="Assets\PIT.png" />
+    <Resource Include="Assets\SD.png" />
+    <Resource Include="Assets\SEA.png" />
+    <Resource Include="Assets\SF.png" />
+    <Resource Include="Assets\STL.png" />
+    <Resource Include="Assets\TB.png" />
+    <Resource Include="Assets\TEN.png" />
+    <Resource Include="Assets\WAS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\rzc-splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\rzc_about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\rzc_about2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\rzc_about-thin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\rzc_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="rzc_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\rzc_app_icon_square.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="RZCData.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TeamSchedule.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\1.png" />
+    <Resource Include="Assets\10.png" />
+    <Resource Include="Assets\11.png" />
+    <Resource Include="Assets\12.png" />
+    <Resource Include="Assets\2.png" />
+    <Resource Include="Assets\3.png" />
+    <Resource Include="Assets\4.png" />
+    <Resource Include="Assets\5.png" />
+    <Resource Include="Assets\6.png" />
+    <Resource Include="Assets\7.png" />
+    <Resource Include="Assets\8.png" />
+    <Resource Include="Assets\9.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

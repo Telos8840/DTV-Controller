@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f87c6bd4d33480c9a77e165615849be" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="DtvRedZoneModel.CurrentWeek" Width="1.5" PointX="0.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtvRedZoneModel.DtvGame" Width="1.5" PointX="6.375" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtvRedZoneModel.DtvTrioEnginePair" Width="1.5" PointX="2.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtvRedZoneModel.GameLocation" Width="1.5" PointX="2.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtvRedZoneModel.Team" Width="1.5" PointX="4.375" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtvRedZoneModel.WeekGameDate" Width="1.5" PointX="0.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtvRedZoneModel.GamePasser" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DtvRedZoneModel.GameReceiver" Width="1.5" PointX="2.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DtvRedZoneModel.GameRusher" Width="1.5" PointX="4.375" PointY="0.5" />
+        <EntityTypeShape EntityType="DtvRedZoneModel.Game" Width="1.5" PointX="6.25" PointY="0.5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

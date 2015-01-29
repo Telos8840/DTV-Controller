@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Data>
+  <Week></Week>
+  <Map>
+    <Input ID="1" weatherID="0" Temp=""/>
+    <Input ID="2" weatherID="0" Temp=""/>
+    <Input ID="3" weatherID="0" Temp=""/>
+    <Input ID="4" weatherID="0" Temp=""/>
+    <Input ID="5" weatherID="0" Temp=""/>
+    <Input ID="6" weatherID="0" Temp=""/>
+    <Input ID="7" weatherID="0" Temp=""/>
+    <Input ID="8" weatherID="0" Temp=""/>
+    <Input ID="9" weatherID="0" Temp=""/>
+    <Input ID="10" weatherID="0" Temp=""/>
+    <Input ID="11" weatherID="0" Temp=""/>
+    <Input ID="12" weatherID="0" Temp=""/>
+    <Input ID="13" weatherID="0" Temp=""/>
+    <Input ID="14" weatherID="0" Temp=""/>
+    <Input ID="15" weatherID="0" Temp=""/>
+    <Input ID="16" weatherID="0" Temp=""/>
+  </Map>
+  <Injury>
+    <Player ID="1" Tricode="" Position="" Name="" Injury=""/>
+    <Player ID="2" Tricode="" Position="" Name="" Injury=""/>
+    <Player ID="3" Tricode="" Position="" Name="" Injury=""/>
+    <Player ID="4" Tricode="" Position="" Name="" Injury=""/>
+    <Player ID="5" Tricode="" Position="" Name="" Injury=""/>
+    <Player ID="6" Tricode="" Position="" Name="" Injury=""/>
+    <Player ID="7" Tricode="" Position="" Name="" Injury=""/>
+  </Injury>
+  <AFC>
+    <Leaders>
+      <Team ID="1" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="2" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="3" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="4" Tag="" Tricode="" Index="" Record=""/>
+    </Leaders>
+    <Wild>
+      <Team ID="1" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="2" Tag="" Tricode="" Index="" Record=""/>
+    </Wild>
+    <Hunt>
+      <Team ID="1" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="2" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="3" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="4" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="5" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="6" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="7" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="8" Tag="" Tricode="" Index="" Record=""/>
+    </Hunt>
+  </AFC>
+  <NFC>
+    <Leaders>
+      <Team ID="1" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="2" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="3" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="4" Tag="" Tricode="" Index="" Record=""/>
+    </Leaders>
+    <Wild>
+      <Team ID="1" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="2" Tag="" Tricode="" Index="" Record=""/>
+    </Wild>
+    <Hunt>
+      <Team ID="1" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="2" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="3" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="4" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="5" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="6" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="7" Tag="" Tricode="" Index="" Record=""/>
+      <Team ID="8" Tag="" Tricode="" Index="" Record=""/>
+    </Hunt>
+  </NFC>
+  
+</Data>

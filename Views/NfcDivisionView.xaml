@@ -1,0 +1,253 @@
+﻿<UserControl x:Class="RCS.DTV.RZC.Views.NfcDivisionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="1230"
+             DataContext="{Binding Source={StaticResource Locator}, Path=NfcDivisionViewModel}">
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="DIVISION LEADERS" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="0" Grid.Column="0" Margin="0, 40, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14"  ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[0].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox FontSize="14" ItemsSource="{Binding Teams}" SelectedIndex="{Binding SelectedIndex1}" SelectedItem="{Binding SelectedTeam1}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam1"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[0].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14"  ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[1].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam2}" SelectedIndex="{Binding SelectedIndex2}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam2"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[1].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14"  ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[2].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam3}" SelectedIndex="{Binding SelectedIndex3}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam3"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[2].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14" ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[3].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam4}" SelectedIndex="{Binding SelectedIndex4}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam4"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[3].Record}"/>
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="WILD CARD LEADERS" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="0" Grid.Column="1" Margin="0, 40, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14" ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[4].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox  ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam5}" SelectedIndex="{Binding SelectedIndex5}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam5"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[4].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14" ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[5].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam6}" SelectedIndex="{Binding SelectedIndex6}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam6"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[5].Record}"/>
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="IN THE HUNT" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="0" Grid.Column="2" Margin="0, 40, 0, 0" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14"  ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[6].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam7}" SelectedIndex="{Binding SelectedIndex7}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam7"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[6].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14"  ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[7].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam8}" SelectedIndex="{Binding SelectedIndex8}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam8"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[7].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14"  ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[8].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam9}" SelectedIndex="{Binding SelectedIndex9}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam9"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[8].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14"  ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[9].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam10}" SelectedIndex="{Binding SelectedIndex10}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam10"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[9].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14" ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[10].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam11}" SelectedIndex="{Binding SelectedIndex11}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam11"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[10].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14" ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[11].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam12}" SelectedIndex="{Binding SelectedIndex12}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam12"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[11].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14" ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[12].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam13}" SelectedIndex="{Binding SelectedIndex13}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam13"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[12].Record}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20">
+                <ComboBox FontSize="14" ItemsSource="{Binding Tags}" SelectedItem="{Binding PlayoffTeams[13].Tag}" Width="50"/>
+                <!--<Image VerticalAlignment="Top" Margin="0, 0, 5, 0" Source="{Binding PlayoffTeams[0].TriCode, Converter={StaticResource TeamLogoImgConverter}}" Height="50" Width="50"/>-->
+                <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam14}" SelectedIndex="{Binding SelectedIndex14}" DisplayMemberPath="Name" Width="130" Margin="8, 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetTeam14"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <!--<TextBlock Margin="10, 10, 10, 0" Foreground="White" FontSize="20" Text="{Binding PlayoffTeams[0].TriCode}" />-->
+                <TextBox CharacterCasing="Upper" TextAlignment="Center" Width="50" FontSize="14" TextWrapping="NoWrap" Text="{Binding PlayoffTeams[13].Record}"/>
+            </StackPanel>
+        </Grid>
+        <Button Grid.Row="1" Grid.Column="0" Height="40" Width="285" Content="RESET BOARD">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="ResetBoard"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="1" Height="40" Width="285" Content="SET BOARD">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="SetPlayoffDivisionData"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+    </Grid>
+</UserControl>

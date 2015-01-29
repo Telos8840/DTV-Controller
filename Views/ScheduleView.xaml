@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="RCS.DTV.RZC.Views.ScheduleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+             xmlns:metro="http://schemas.codeplex.com/elysium"
+             xmlns:model="clr-namespace:RCS.DTV.RZC.Models"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="1230"
+             DataContext="{Binding Source={StaticResource Locator}, Path=ScheduleViewModel}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="TeamName" DataType="{x:Type model:CoreTeams}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Tricode}" Margin="0, 3, 0, 0"/>
+                <TextBlock Text=" - " Margin="3, 3, 0, 0"/>
+                <TextBlock Text="{Binding Name}" Margin="3, 3, 0, 0"/>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="268*"/>
+            <RowDefinition Height="57*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="229*"/>
+                <RowDefinition Height="39*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel  Grid.Column="0" Grid.Row="0" Orientation="Vertical" Margin="0, 70">
+                <ComboBox Margin="35, 0" FontSize="14" ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeamTri}" DisplayMemberPath="Name" Width="150" Height="40">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="GetSchedule"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <Image Margin="0, 50" Source="{Binding SelectedTeam.Team, Converter={StaticResource TeamLogoImgConverter}}" Height="250" Width="250"/>
+            </StackPanel>
+
+            <Grid Grid.Column="1" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Vertical" Margin="20, 50">
+                    <StackPanel Orientation="Horizontal">
+                        <metro:ToggleSwitch Margin="8, 0, 0, 0" OnHeader="AT" OffHeader="VS" Width="80" IsChecked="{Binding HomeAway1}"/>
+                        <TextBox Margin="20, 15" Width="150" Text="{Binding VsTeam1}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <metro:ToggleSwitch Margin="8, 0, 0, 0" OnHeader="AT" OffHeader="VS" Width="80" IsChecked="{Binding HomeAway2}"/>
+                        <TextBox Margin="20, 15" Width="150" Text="{Binding VsTeam2}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <metro:ToggleSwitch Margin="8, 0, 0, 0" OnHeader="AT" OffHeader="VS" Width="80" IsChecked="{Binding HomeAway3}"/>
+                        <TextBox Margin="20, 15" Width="150" Text="{Binding VsTeam3}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <metro:ToggleSwitch Margin="8, 0, 0, 0" OnHeader="AT" OffHeader="VS" Width="80" IsChecked="{Binding HomeAway4}"/>
+                        <TextBox Margin="20, 15" Width="150" Text="{Binding VsTeam4}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <metro:ToggleSwitch Margin="8, 0, 0, 0" OnHeader="AT" OffHeader="VS" Width="80" IsChecked="{Binding HomeAway5}"/>
+                        <TextBox Margin="20, 15" Width="150" Text="{Binding VsTeam5}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <metro:ToggleSwitch Margin="8, 0, 0, 0" OnHeader="AT" OffHeader="VS" Width="80" IsChecked="{Binding HomeAway6}"/>
+                        <TextBox Margin="20, 15" Width="150" Text="{Binding VsTeam6}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <metro:ToggleSwitch Margin="8, 0, 0, 0" OnHeader="AT" OffHeader="VS" Width="80" IsChecked="{Binding HomeAway7}"/>
+                        <TextBox Margin="20, 15" Width="150" Text="{Binding VsTeam7}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <ListBox Grid.Column="1" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ItemsSource="{Binding TeamNames}" ItemTemplate="{StaticResource TeamName}"/>
+                
+            </Grid>
+
+            <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom" Margin="0, 0, 0, 10">
+                    <TextBlock Text="Week" Margin="7, 0" FontSize="25" Foreground="White" />
+                    <TextBlock Text="{Binding ElementName=WeekSlider, Path=Value}" FontSize="25" Foreground="White" />
+                </StackPanel>
+                <Slider x:Name="WeekSlider" Value="{Binding WeekNumber}" TickFrequency="1"
+                            IsSnapToTickEnabled="True" Margin="0, 0, 0, -20" Minimum="14"
+                            Maximum="17" AutoToolTipPlacement="BottomRight" Width="190" HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom" SelectionStart="14" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="ValueChanged">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="GetSchedule" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Slider>
+            </StackPanel>
+
+        </Grid>
+
+        <DockPanel Grid.Row="1">
+            <Button  Content="SEND SCHEDULE" HorizontalAlignment="Center" Margin="100, 0" Height="40" Width="285">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="SendSchedule"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </DockPanel>
+
+    </Grid>
+</UserControl>

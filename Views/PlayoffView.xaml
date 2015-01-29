@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="RCS.DTV.RZC.Views.PlayoffView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+             mc:Ignorable="d" 
+             d:DesignHeight="180" d:DesignWidth="245"
+             DataContext="{Binding Source={StaticResource Locator}, Path=PlayoffViewModel}">
+
+    <StackPanel Orientation="Vertical" Margin="5">
+        <Grid Height="125" Margin="0, 5">
+            <Image Width="115" HorizontalAlignment="Left" Source="{Binding AwayTeam, Converter={StaticResource PathToLogoConverter}}"/>
+            <Image Width="115" HorizontalAlignment="Right" Source="{Binding HomeTeam, Converter={StaticResource PathToLogoConverter}}"/>
+        </Grid>
+        <Grid Margin="23, 0">
+            <Button Content="Away" HorizontalAlignment="Left" Width="70">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadAwayTeam"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="Home" HorizontalAlignment="Right" Width="70">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadHomeTeam"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
+
+    </StackPanel>
+</UserControl>
